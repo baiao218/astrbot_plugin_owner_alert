@@ -2,6 +2,31 @@
 
 她跟别人聊天时，只要话说到「这事得找管理员」那个份上，就来告诉你。
 
+## 安装
+
+在 AstrBot WebUI 的**插件市场**搜索「管理员呼叫」，或者：
+
+```bash
+cd AstrBot/data/plugins
+git clone https://github.com/baiao218/astrbot_plugin_owner_alert.git
+```
+
+重启 AstrBot（或在插件页点「重载插件」）。
+
+### 前置条件
+
+1. **AstrBot ≥ 4.17.0**
+2. 平台不限
+3. `owner_umo` 留空时会自动用 `admins_id` 里的 QQ 号拼出私聊会话，
+   所以先把管理员账号配好
+4. 想让她自己判断该不该上报，需要人格提示词里写一句引导（见文末「人格侧怎么配合」）
+
+### 许可
+
+MIT，见 [LICENSE](LICENSE)。
+
+---
+
 ## 它解决什么
 
 对外会话里的她只有解释权，没有处置权。可现实里的对话常常会走到她管不到的地方：
