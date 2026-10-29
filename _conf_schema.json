@@ -1,0 +1,68 @@
+{
+  "enable": {
+    "description": "启用管理员呼叫",
+    "type": "bool",
+    "hint": "关掉后她既不主动上报，钩子也不再扫。命令行 /上报测试 仍然可用。",
+    "default": true
+  },
+  "owner_umo": {
+    "description": "提醒发往哪个会话",
+    "type": "string",
+    "hint": "unified_msg_origin，多个用逗号分隔，例如 default:FriendMessage:123456。留空则自动使用「admins_id 里的 QQ 号绑定的私聊」，不用手写也能用。",
+    "default": ""
+  },
+  "cooldown_minutes": {
+    "description": "同一会话的上报冷却（分钟）",
+    "type": "int",
+    "hint": "对方连续追问时，这段时间内只报一次。设 0 表示不限制。",
+    "default": 60
+  },
+  "daily_max": {
+    "description": "每个会话每天最多上报几次",
+    "type": "int",
+    "hint": "防止被恶意刷屏。设 0 表示不限制。",
+    "default": 10
+  },
+  "threshold": {
+    "description": "触发阈值（分）",
+    "type": "int",
+    "hint": "对方提到强信号词记 3 分，她说出「管理员 / 越权 / 上报」记 3 分，对方提到弱信号词最多记 2 分。达到这个分数就上报。默认 3 表示任一强信号单独命中即可。调到 6 就变成「两边同时出现」才报。",
+    "default": 3
+  },
+  "history_rounds": {
+    "description": "上报时附带最近几轮对话",
+    "type": "int",
+    "hint": "一问一答算一轮。太多会刷屏，5~8 比较合适。",
+    "default": 6
+  },
+  "include_transcript": {
+    "description": "上报时附带对话原文",
+    "type": "bool",
+    "hint": "关掉就只发「谁来找你 + 触发原因」，保护性更强但你判断不了上下文。",
+    "default": true
+  },
+  "show_session_id": {
+    "description": "上报时附带会话 ID",
+    "type": "bool",
+    "hint": "排查问题时有用，平时可以关。",
+    "default": false
+  },
+  "user_strong_keywords": {
+    "description": "对方侧的强信号词",
+    "type": "text",
+    "hint": "逗号分隔。命中任意一个就达到阈值，直接上报。她被人指控、被威胁、被要求删记录时会用到。",
+    "default": "隐私,侵权,举报,投诉,起诉,报警,网警,曝光,律师函,法院,违法,追责,删掉聊天,删除聊天,删除记录,删掉记录,不留记录,聊天记录,举证,证据,未成年,骚扰,开盒,人肉,管理员,找你们管理,负责人,你们公司,开发者,客服,真人,给个说法"
+  },
+  "reply_escalate_keywords": {
+    "description": "她的「外包话术」信号词",
+    "type": "text",
+    "hint": "逗号分隔。她的回复里出现这些词，说明她已经把责任推给了一个管不到的人——正是你要介入的时刻。",
+    "default": "管理员,平台侧,平台方,平台层面,越权,权限不足,我无权,不在我的权限,超出我的权限,上报,报上去,备案,客服,开发者,所有者,真人,人工处理,找平台"
+  },
+  "user_weak_keywords": {
+    "description": "对方侧的弱信号词",
+    "type": "text",
+    "hint": "逗号分隔。只记 1~2 分，单独不足以触发，用来在边缘情况里加权。注意别放「记录」这类她自己也常说的词，会误报。",
+    "default": "删掉,删除,清空,监控,监视,偷看,后台,日志,存档,截图,权限,你是谁,你是不是机器人,举报你"
+  }
+}
